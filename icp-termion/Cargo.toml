@@ -1,0 +1,14 @@
+[package]
+name = "icp-termion"
+version = "0.1.0"
+edition = "2018"
+
+authors = ["Ilya Bobyr <ilya.bobyr@gmail.com"]
+license = "BSD-3-Clause"
+
+description = "Termion support for the icp interactive input parser framework"
+
+[dependencies]
+icp = { path = "../icp" }
+
+termion = "1.5"
