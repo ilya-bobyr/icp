@@ -1,0 +1,10 @@
+# Build artifacts.
+/icp/target
+/icp-termion/target
+
+# These are libraries, so Cargo.lock is not tracked.
+/icp/Cargo.lock
+/icp-termion/Cargo.lock
+
+# Editor temporary files.
+*.sw?
