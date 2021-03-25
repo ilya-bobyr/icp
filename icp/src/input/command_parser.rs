@@ -14,11 +14,11 @@
 
 //! A "quick and dirty" parser for commands that have a structure where a
 //! command is identified by the first word of the input and the rest is parsed
-//! as a sequence of "arguments" left to right.
+//! as a sequence of "arguments", left to right.
 //!
 //! Current implementation is a "one level" recursive decent solution - every
 //! command parser will try to parse the first word and will use a sequence of
-//! argment parsers, to parse the command arguments that follow.
+//! argument parsers, to parse the command arguments that follow.
 //!
 //! Command parsers are instances of the [`CommandParser`] trait.  Predefined
 //! command parsers are provided as [`Command0ArgsParser`],
@@ -30,9 +30,9 @@
 //!
 //! TODO: Ideally, input should be parsed by a grammar and command should
 //! provide grammars that are combined into an "input language" grammar.  This a
-//! more complex approach, but it should provide a more uniform and generic
+//! more complex approach, but it would provide a more uniform and generic
 //! solution to both error reporting and completion.  As well as allow for
-//! complex language when commands could be using other commands as arguments,
+//! complex language where could be using other commands as arguments,
 //! or if we want some kind of "command modification" language.
 
 pub mod alternatives;

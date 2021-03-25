@@ -56,22 +56,23 @@ pub use prim_int::{prim_int_for_range_and_name, prim_int_with_name};
 #[derive(PartialEq, Clone, Debug)]
 pub enum ArgParseRes<Res> {
     Failed {
-        /// Last input character that was successfully parsed.  `0` means that
-        /// parsing of this argument have failed at the "syntactic level".  If
-        /// the argument had the right structure but failed at a higher level
-        /// (like bounds checks), this should point to the last character of the
-        /// argument, not the first.
+        /// First character of the input that was not successfully parsed.  `0`
+        /// means that parsing of this argument have failed at the "syntactic
+        /// level".  Like the first character of the input was a number when we
+        /// are parsing an integer.  If the argument had the right structure but
+        /// failed at a higher level (like bounds checks), this should point to
+        /// the last character of the argument, not the first.
         parsed_up_to: usize,
 
-        /// When additional information is available as to why the parsing
-        /// failed, this field holds the explanation.  There could be more than
-        /// one failure.  For example if several parsers where applied and all
-        /// have failed.
+        /// When additional information as to why the parsing failed is
+        /// available, this field holds the explanation.  There could be more
+        /// than one failure.  For example if several parsers where applied and
+        /// all have failed.
         ///
         /// Note that all listed failures apply only to the parsed part.  If
         /// several parsers where applied and one failed at a later point that
-        /// failure should not be present in this list.  So all the values
-        /// should be shown to the users.
+        /// failure should not be present in this list.  It is expected that all
+        /// the values are shown to the user.
         reason: Vec<String>,
     },
     Parsed(Res),
@@ -239,10 +240,10 @@ where
 /// values of all the preceding arguments when parsing the current argument.
 ///
 /// All context-free argument parsers and automatically context-sensitive, when
-/// the just ignore values produced by preceding parsers, and the macro will
-/// generate corresponding instances.
+/// they just ignore values produced by the preceding parsers, and the macro
+/// will generate corresponding instances.
 ///
-/// Except for additional arguments holding references to the parse context,
+/// Except for additional arguments, holding references to the parse context,
 /// generated traits are identical to the [`ContextFreeArgParser`] trait.
 macro_rules! define_arg_parser {
     ($name:ident,
@@ -369,7 +370,7 @@ macro_rules! define_arg_parser {
     };
 }
 
-// Arg1Parser is ContextFreeArgParser.  Context is the values of the previous
+// Arg1Parser is a ContextFreeArgParser.  Context are the values of the previous
 // arguments, and thus the first argument has not context.
 define_arg_parser!(
     Arg2Parser,

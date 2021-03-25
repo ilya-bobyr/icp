@@ -85,7 +85,7 @@ impl<Res> ContextFreeArgParser<Res> for ContextFreeAlternativesArgParser<Res> {
 macro_rules! define_alternatives_arg_parser {
     (
         $type_name:ident: $parser_trait:ident,
-        $constructo_name:ident,
+        $constructor_name:ident,
         { $( $arg_name:ident: $arg_type:ident ),* $(,)* },
         $res:ident
     ) => {
@@ -95,7 +95,7 @@ macro_rules! define_alternatives_arg_parser {
 
         // TODO: Currently only used in tests.
         #[cfg(test)]
-        pub fn $constructo_name<$( $arg_type, )* $res, Parsers>(
+        pub fn $constructor_name<$( $arg_type, )* $res, Parsers>(
             parsers: Parsers,
         ) -> $type_name<$( $arg_type, )* $res>
         where

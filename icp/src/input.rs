@@ -33,7 +33,7 @@ use history::History;
 
 /// Prompt text may be different depending on whether the entered text forms a
 /// complete command or not.  Fields specify different prompts to be shown
-/// depending on the texted currently typed by the users.
+/// depending on the text currently typed by the users.
 #[derive(PartialEq, Clone, Debug)]
 pub struct Prompt {
     /// No text has been entered so far.

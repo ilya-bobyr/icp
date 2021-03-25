@@ -121,8 +121,8 @@ fn parse_input(mut input: &str, base: &Path) -> ParsedInput {
         // If it exists, is a directory but the user did not end the input with
         // a forward slash we will treat it as a prefix match below.
         //
-        // NOTE: An empty statement keeps `cargo fmt` from shifting attaching
-        // this comment to the `else if` statement and shifting it to the left.
+        // NOTE: An empty statement keeps `cargo fmt` from attaching this
+        // comment to the `else if` statement and shifting it to the left.
         ;
     } else if show_dir_content {
         return ParsedInput::InvalidPath {

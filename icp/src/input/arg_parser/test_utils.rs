@@ -23,9 +23,13 @@ pub fn build_cf_parse_checkers<Parser, Res>(
     context: &'static str,
     parser: Parser,
 ) -> (
+    // check `hints()`
     impl for<'a> Fn(&[&'a str]),
+    // check `suggestion()`
     impl for<'a> Fn(&str, &[&'a str]),
+    // call `parse()` and expect success
     impl Fn(&str, Res),
+    // call `parse()` and expect failure
     impl for<'a> Fn(&str, usize, &[&'a str]),
 )
 where
@@ -133,9 +137,13 @@ pub fn build_arg2_parse_checkers<Parser, Res1, Res2>(
     context: &'static str,
     parser: Parser,
 ) -> (
+    // check `hints()`
     impl for<'a> Fn(&Res1, &[&'a str]),
+    // check `suggestion()`
     impl for<'a> Fn(&Res1, &str, &[&'a str]),
+    // call `parse()` and expect success
     impl Fn(&Res1, &str, Res2),
+    // call `parse()` and expect failure
     impl for<'a> Fn(&Res1, &str, usize, &[&'a str]),
 )
 where
